@@ -415,7 +415,7 @@ describe('list reducer', () => {
       beforeEach(() => {
         store = createStore(reducer, {
           byUrl: {
-            'https://unpkg.com/@uniswap/default-token-list@latest/uniswap-default.tokenlist.json': {
+            'https://raw.githubusercontent.com/htlotto/logo/master/lotto.tokenlist.json': {
               error: null,
               current: STUB_TOKEN_LIST,
               loadingRequestId: null,
@@ -435,7 +435,7 @@ describe('list reducer', () => {
 
       it('clears the current lists', () => {
         expect(
-          store.getState().byUrl['https://unpkg.com/@uniswap/default-token-list@latest/uniswap-default.tokenlist.json']
+          store.getState().byUrl['https://raw.githubusercontent.com/htlotto/logo/master/lotto.tokenlist.json']
         ).toBeUndefined()
         expect(store.getState().byUrl['https://unpkg.com/@uniswap/default-token-list@latest']).toBeUndefined()
       })
@@ -471,7 +471,7 @@ describe('list reducer', () => {
       beforeEach(() => {
         store = createStore(reducer, {
           byUrl: {
-            'https://unpkg.com/@uniswap/default-token-list@latest/uniswap-default.tokenlist.json': {
+            'https://raw.githubusercontent.com/htlotto/logo/master/lotto.tokenlist.json': {
               error: null,
               current: STUB_TOKEN_LIST,
               loadingRequestId: null,
@@ -492,7 +492,7 @@ describe('list reducer', () => {
 
       it('does not remove lists not in last initialized list of lists', () => {
         expect(
-          store.getState().byUrl['https://unpkg.com/@uniswap/default-token-list@latest/uniswap-default.tokenlist.json']
+          store.getState().byUrl['https://raw.githubusercontent.com/htlotto/logo/master/lotto.tokenlist.json']
         ).toEqual({
           error: null,
           current: STUB_TOKEN_LIST,
@@ -501,7 +501,7 @@ describe('list reducer', () => {
         })
       })
       it('removes lists in the last initialized list of lists', () => {
-        expect(store.getState().byUrl['https://unpkg.com/@uniswap/default-token-list@latest']).toBeUndefined()
+        expect(store.getState().byUrl['https://raw.githubusercontent.com/htlotto/logo/master/lotto.tokenlist.json']).toBeUndefined()
       })
 
       it('adds all the lists in the default list of lists', () => {
@@ -513,7 +513,7 @@ describe('list reducer', () => {
         // note we don't expect the uniswap default list to be prepopulated
         // this is ok.
         Object.keys(byUrl).forEach(url => {
-          if (url !== 'https://unpkg.com/@uniswap/default-token-list@latest/uniswap-default.tokenlist.json') {
+          if (url !== 'https://raw.githubusercontent.com/htlotto/logo/master/lotto.tokenlist.json') {
             expect(byUrl[url]).toEqual({
               error: null,
               current: null,
